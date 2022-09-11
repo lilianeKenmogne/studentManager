@@ -75,16 +75,79 @@
                                         <button class="input-group-text" id="addDbtn">Ajouter</button>
                                     </div>
                                     <div class=" mt-2" role="group" aria-label="Basic outlined example">
-                                        <button type="button" class="btn info-btn">Terminer</button>
-                                        <button type="button" class="btn info-btn">Consulter la liste des
+                                        <button type="button" class="btn info-btn" id="terminerD">Terminer</button>
+                                        <button type="button" class="btn info-btn" id="consulterD">Consulter la liste
+                                            des
                                             debouchés</button>
                                     </div>
 
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                                    aria-labelledby="v-pills-profile-tab">...</div>
+                                    aria-labelledby="v-pills-profile-tab">
+                                    <div class="input-group mb-2">
+
+                                        <input type="text" id="codeM" placeholder="Code de la matière"
+                                            class="form-control">
+
+                                        <input type="text" id="nomM" placeholder="Nom de la Matiere"
+                                            class="form-control">
+                                        <input type="number" id="volumeH" placeholder="VolumeHoraire"
+                                            class="form-control">
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <input type="text" id="nomE" placeholder="nom Enseignant" class="form-control">
+                                        <input type="text" id="assistant" placeholder="nom assistant"
+                                            class="form-control">
+                                    </div>
+                                    <Span class="mx-2">Est Pratique :</Span>
+                                    <div class="form-check form-check-inline">
+
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="oui"
+                                            value="oui">
+                                        <label class="form-check-label" for="inlineRadio1">Oui</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="non"
+                                            value="non">
+                                        <label class="form-check-label" for="inlineRadio2">Nom</label>
+                                    </div>
+
+
+                                    <div class=" mt-2" role="group" aria-label="Basic outlined example">
+                                        <button type="button" class="btn info-btn" id="addMbtn">Ajouter</button>
+                                        <button type="button" class="btn info-btn" id="terminerM">Terminer</button>
+                                        <button type="button" class="btn info-btn" id="consulterM">Consulter la liste
+                                            des
+                                            matieres</button>
+                                    </div>
+
+
+                                </div>
                                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                    aria-labelledby="v-pills-messages-tab">...</div>
+                                    aria-labelledby="v-pills-messages-tab">
+                                    <div class="input-group">
+
+                                        <span class="input-group-text">Nom du Parcours</span>
+                                        <input type="text" aria-label="First name" id="nomP" class="form-control"
+                                            placeholder="Nom du parcours">
+                                    </div>
+                                    <div class="mt-2 mb-2">Selectionner les débouchés du parcours</div>
+                                    <div id="debouchesParcours">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                                value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">1</label>
+                                        </div>
+                                    </div>
+
+                                    <div class=" mt-2" role="group" aria-label="Basic outlined example">
+                                        <button type="button" class="btn info-btn" id="addPbtn">Ajouter</button>
+                                        <button type="button" class="btn info-btn" id="terminerP">Terminer</button>
+                                        <button type="button" class="btn info-btn" id="consulterP">Consulter la liste
+                                            des
+                                            debouchés</button>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -124,6 +187,12 @@
                         <table id="Tdebouche">
 
                         </table>
+                        <table id="Tmatiere">
+
+                        </table>
+                        <table id="Tparcours">
+
+                        </table>
 
                     </div>
                 </div>
@@ -136,6 +205,7 @@
         <script src="bootstrapp/js/bootstrap.bundle.min.js"></script>
         <script src="js/jquery-3.6.0.js"></script>
         <script src="js/debouches.js"></script>
+        <script src="js/matiere.js"></script>
 </body>
 
 </html>

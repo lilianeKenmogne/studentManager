@@ -1,17 +1,16 @@
-//declaration de la structure de données
-function Debouche(code, nom) {
-    this.codeD = code;
-    this.nomD = nom;
+//declaratio de la structure parcours
+function Parcours(nom, Debouche) {
+    this.nomP = nom;
+    this.Debouche = Debouche;
 }
 
-// creation du tableau qui contiendra la liste des debouches
-var listeDebouches = new Array();
+// creation du tableau qui contiendra la liste des parcours
+var listeParcours = new Array();
 
-//fonction qui affiche les elements du tableau de debouché dans un tableau HTML
-
-function previewDebouches(listeDebouches) {
+//fonction qui affiche les elements du tableau de parcours dans un tableau HTML
+function previewParours(listeParcours) {
     //recupere le tableau en html grace au DOM
-    var preview = document.getElementById('Tdebouche');
+    var preview = document.getElementById('Tparcours');
 
     //vide le tableau html
     preview.innerHTML = "";
@@ -19,9 +18,9 @@ function previewDebouches(listeDebouches) {
     //ajout des cellules d'entete
     let ligneEntete = document.createElement('tr');
     let celluEntete1 = document.createElement('th');
-    celluEntete1.innerText = "Nom du Débouché";
+    celluEntete1.innerText = "Nom du Parcours";
     let celluEntete2 = document.createElement('th');
-    celluEntete2.innerText = "Code du Débouché";
+    celluEntete2.innerText = "Liste des debouchés";
     let celluEntete3 = document.createElement('th');
     celluEntete3.innerText = "Actions";
     ligneEntete.appendChild(celluEntete1);
@@ -30,14 +29,22 @@ function previewDebouches(listeDebouches) {
     preview.appendChild(ligneEntete);
 
     //ajout des elements du tableau d'objet
-    listeDebouches.forEach((debouche, index) => {
+    listeParcours.forEach((parcours, index) => {
         let ligne = document.createElement('tr');
 
         let cellule1 = document.createElement('td');
-        cellule1.innerText = debouche.nomD;
+        cellule1.innerText = parcours.nomD;
 
         let cellule2 = document.createElement('td');
-        cellule2.innerText = debouche.codeD;
+        var listeDebouchesParcours = document.createElement('ol');
+        let listeDeTousLesDebouchesSurLaPage = document.getElementsByClassName('debouches');
+        listeDeTousLesDebouchesSurLaPage.forEach(debouche => {
+            if (debouche.checked) {
+                listeDebouchesParcours.innerHTML += `<li>${debouche.value}</li>`;
+            }
+
+        });
+        cellule2.appendChild(listeDebouchesParcours);
 
         let btn1 = document.createElement('button');
         btn1.innerHTML = '+';
@@ -88,16 +95,34 @@ function previewDebouches(listeDebouches) {
     })
 }
 
-let addDeboucheBtn = document.getElementById('addDbtn');
-addDeboucheBtn.addEventListener('click', function ajouterDebouche(e) {
+let addParcoursBtn = document.getElementById('addDbtn');
+addParcoursBtn.addEventListener('click', function ajouterParcours(e) {
     e.preventDefault();
 
     //recuperation des donnees
-    let inputNomDebouche = document.getElementById('nomD');
-    let nomDebouche = inputNomDebouche.value;
-    let inputCodeDebouche = document.getElementById('codeD');
-    let codeDebouche = inputCodeDebouche.value
+    let inputNomParcours = document.getElementById('nomP');
+    let nomParcours = inputNomParcours.value;
 
+    let inputCodeDebouche = document.getElementById('codeD');
+    let codeDebouche = inputCodeDebouche.value;
+
+    var listeDebouchesParcours=Array();
+        let listeDeTousLesDebouchesSurLaPage = document.querySelectorAll('.debouches');
+        listeDeTousLesDebouchesSurLaPage =[...listeDeTousLesDebouchesSurLaPage];
+        let listeDebouchesChecked = Array();
+        listeDeTousLesDebouchesSurLaPage.forEach(debouche => {
+            if (debouche.checked) {
+               listeDebouchesChecked.push(debouche.value);
+            }
+        });
+        listeDebouchesParcours = listeDebouches.filter(debouche=>{
+            listeDebouchesChecked.forEach(elt =>{
+                if(debouche.nomD = elt){
+                    return debouche;
+                };
+            })
+        });
+        console.log(listeDebouchesParcours);
     //creation de l'objet debouché
     let debouche = new Debouche(nomDebouche, codeDebouche);
 
@@ -112,42 +137,4 @@ addDeboucheBtn.addEventListener('click', function ajouterDebouche(e) {
 
     //affichage de l'aperçu
     previewDebouches(listeDebouches);
-});
-
-//fonction pour fermer le live preview
-let terminerDeboucheBtn = document.getElementById('terminerD');
-terminerDeboucheBtn.addEventListener('click', function terminerDebouche(e) {
-    e.preventDefault();
-    //recupere le tableau en html grace au DOM
-    var preview = document.getElementById('Tdebouche');
-
-    //vide le tableau html
-    preview.innerHTML = "";
-})
-
-//fonction pour afficher la liste des debouchés
-let consulterDeboucheBtn = document.getElementById('consulterD');
-consulterDeboucheBtn.addEventListener('click', function consulterDebouche(e) {
-    e.preventDefault();
-    //affichage de l'aperçu
-    previewDebouches(listeDebouches);
-})
-
-//fonction pour afficher la liste des parcours dans le bloc parcours
-let blocParcours = document.getElementById('v-pills-messages-tab');
-blocParcours.addEventListener('click', function afficherListeDebouchesBlocParcours(e) {
-    e.preventDefault();
-
-    let debouchesParcours = document.getElementById('debouchesParcours');
-    debouchesParcours.innerHTML = "";
-    listeDebouches.forEach((debouche) => {
-        debouchesParcours.innerHTML += `
-        <div class="form-check form-check-inline">
-            <input class="form-check-input debouches" type="checkbox" 
-                value="${debouche.nomD}">
-            <label class="form-check-label">${debouche.nomD}</label>
-          </div>
-        `;
-    });
-
 });

@@ -1,0 +1,41 @@
+<script>
+    btn1.addEventListener('click', function modifierDebouche(e) {
+        e.preventDefault();
+        let modalContent = document.getElementById('modalContent');
+        modalContent.innerHTML =
+            `<div class="input-group">
+            <span class="input-group-text">Nom</span>
+            <input type="text" id="nouveauNomD" class="form-control"placeholder="${listeDebouches[index].nomD}">
+            <span class="input-group-text">Code</span>
+            <input type="text"  id="nouveauCodeD" class="form-control"placeholder="${listeDebouches[index].codeD}">
+         </div>`;
+
+        let saveModifBtn = document.getElementById('saveModif');
+        saveModifBtn.addEventListener('click', function saveModifDebouche(e) {
+            e.preventDefault();
+            listeDebouches[index].nomD = document.getElementById('nouveauNomD').value;
+            listeDebouches[index].codeD = document.getElementById('nouveauCodeD').value;
+            previewDebouches(listeDebouches);
+        })
+    })
+
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modifier l'enregistrement</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="modalContent">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="saveModif" class="input-group-text" data-bs-dismiss="modal"
+                    aria-label="Close">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
