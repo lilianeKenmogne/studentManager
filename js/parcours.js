@@ -1,8 +1,4 @@
-//declaratio de la structure parcours
-function Parcours(nom, Debouche) {
-    this.nomP = nom;
-    this.Debouche = Debouche;
-}
+
 
 // creation du tableau qui contiendra la liste des parcours
 var listeParcours = new Array();
@@ -138,3 +134,4 @@ addParcoursBtn.addEventListener('click', function ajouterParcours(e) {
     //affichage de l'aperçu
     previewDebouches(listeDebouches);
 });
+

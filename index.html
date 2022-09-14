@@ -31,11 +31,13 @@
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="saveStudent-tab" data-bs-toggle="tab" data-bs-target="#saveStudent"
-                    type="button" role="tab" aria-controls="saveStudent" aria-selected="false">saveStudent</button>
+                    type="button" role="tab" aria-controls="saveStudent" aria-selected="false">Enregistrer Les
+                    etudiants</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="studentList-tab" data-bs-toggle="tab" data-bs-target="#studentList"
-                    type="button" role="tab" aria-controls="studentList" aria-selected="false">studentList</button>
+                    type="button" role="tab" aria-controls="studentList" aria-selected="false">Liste des
+                    Etudiants</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -145,7 +147,7 @@
                                         <button type="button" class="btn info-btn" id="terminerP">Terminer</button>
                                         <button type="button" class="btn info-btn" id="consulterP">Consulter la liste
                                             des
-                                            debouchés</button>
+                                            Parcours</button>
                                     </div>
                                 </div>
 
@@ -164,6 +166,7 @@
                             </svg>
                         </h6>
 
+
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
@@ -176,6 +179,9 @@
                                     </div>
                                     <div id="modalContent">
                                         ...
+                                        <div id="debouchesParcours">
+
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" id="saveModif" class="input-group-text"
@@ -196,8 +202,190 @@
 
                     </div>
                 </div>
-                <div class="tab-pane fade" id="saveStudent" role="tabpanel" aria-labelledby="saveStudent-tab">...</div>
-                <div class="tab-pane fade" id="studentList" role="tabpanel" aria-labelledby="studentList-tab">...</div>
+
+            </div>
+            <div class="tab-pane fade" id="saveStudent" role="tabpanel" aria-labelledby="saveStudent-tab">
+                <div class="row mt-3 mx-3">
+                    <h3 class="text-center my-3 mb-5 titre">Enrgistrer un Etudiant</h3>
+                    <div class="col-md-7">
+                        <div class="input-group mb-3">
+
+                            <input type="text" aria-label="First name" id="nomEtu" class="form-control"
+                                placeholder="Nom de l'etudiant">
+
+                            <input type="text" aria-label="Last name" id="prenomE" class="form-control"
+                                placeholder="Prenom Etudiant">
+
+                            <input type="date" aria-label="date" id="date" class="form-control" placeholder="Poids">
+                        </div>
+                        <div class="input-group mb-3">
+
+                            <input type="text" aria-label="lieuNaissance" id="lieuNaissance" Class="form-control"
+                                placeholder="lieu de Naissance">
+
+                            <input type="text" aria-label="taille" id="taille" class="form-control"
+                                placeholder="taille">
+
+                            <input type="text" aria-label="poids" id="poids" class="form-control" placeholder="Poids">
+                        </div>
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6">
+                                    <Span class="mx-2">Sexe</Span>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="Homme" value="Homme">
+                                        <label class="form-check-label" for="inlineRadio1">Homme</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="Femme" value="Femme">
+                                        <label class="form-check-label" for="inlineRadio1">Femme</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check form-check-inline d-flex justify-content-end ">
+                                        <label class="form-check-label mx-2" for="inlineRadio1">Parcours: </label>
+                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+                                            id="parcoursE">
+                                            <option selected disabled>Parcours</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <Span class="mb-2">Entrer les notes de l'etudiant</Span>
+                                <div class="input-group">
+                                    <select class="form-select form-select-sm" id="selectMatiere"
+                                        aria-label=".form-select-sm example" id="parcourE">
+                                        <option selected disabled id="selectedMatiere">Matiere</option>
+
+                                    </select>
+                                    <span class="input-group-text">Note</span>
+                                    <input type="text" aria-label="First name" id="note" class="form-control"
+                                        placeholder="Entrer la note">
+                                    <button class="input-group-text" id="addNoteBtn">Ajouter</button>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class=" mt-2" role="group" aria-label="Basic outlined example">
+                                    <button type="button" class="btn info-btn" id="addEbtn">Enregistrer
+                                        l'Etudiant</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel2">Modifier l'enregistrement</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div id="modalContent2">
+                                        ...
+                                        <div id="debouchesParcours">
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="saveModif2" class="input-group-text"
+                                            data-bs-dismiss="modal" aria-label="Close">Enregistrer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-5" id="livepreview2">
+                        <h6 class="mb-1">Live Preview
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-eye" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                <path
+                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                            </svg>
+                        </h6>
+                        <table id="Tnote">
+
+                        </table>
+                        <table id="Tetudiant">
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="studentList" role="tabpanel" aria-labelledby="studentList-tab">
+                <div class="row mt-3 mx-3">
+                    <h3 class="text-center my-3 mb-5 titre">Liste des etudiants</h3>
+                    <table id="listeEtudiants">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Noms</th>
+                                    <th scope="col">Prenoms</th>
+                                    <th scope="col">Date de Naissance</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listeEtudiantsContent">
+
+                            </tbody>
+                        </table>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel4">Modifier l'etudiant</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div id="modalContent4" class="mx-5 my-3">
+                                        ...
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="saveModif4" class="input-group-text"
+                                            data-bs-dismiss="modal" aria-label="Close">Enregistrer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel3">Détails</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div id="modalContent3" class="mx-5 my-3">
+                                        ...
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!-- <button type="button" id="saveModif3" class="input-group-text"
+                                            data-bs-dismiss="modal" aria-label="Close">Enregistrer</button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </table>
+                </div>
+
             </div>
         </div>
 
@@ -205,7 +393,7 @@
         <script src="bootstrapp/js/bootstrap.bundle.min.js"></script>
         <script src="js/jquery-3.6.0.js"></script>
         <script src="js/debouches.js"></script>
-        <script src="js/matiere.js"></script>
+
 </body>
 
 </html>
